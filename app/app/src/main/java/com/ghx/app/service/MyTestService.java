@@ -1,13 +1,12 @@
 package com.ghx.app.service;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
 import android.support.annotation.Nullable;
-
 import com.ghx.app.iview.IMyTestView;
 import com.ghx.app.utils.Logger;
-
+import android.content.Intent;
+import android.widget.Toast;
+import android.app.Service;
+import android.os.IBinder;
 
 /**
  * Created by guo_hx on 2016/10/31.14:50
@@ -29,7 +28,7 @@ public class MyTestService extends Service implements IMyTestView {
     @Override
     public IBinder onBind(Intent intent) {
         Logger.log_i(LOG_TAG, "onBind");
-        return new MyTestBinder(this,this);
+        return new MyTestBinder(this);
     }
 
     @Override
@@ -57,7 +56,6 @@ public class MyTestService extends Service implements IMyTestView {
     }
 
 
-
     @Override
     public void onDestroy() {
 
@@ -68,6 +66,6 @@ public class MyTestService extends Service implements IMyTestView {
 
     @Override
     public void binderTest() {
-
+        Toast.makeText(this, "binderTest_方法被调用了", Toast.LENGTH_SHORT).show();
     }
 }
